@@ -15,3 +15,7 @@ AI system that detects network attacks in real-time. Models are trained on CIC-I
 ├── api/           # Inference service
 └── infra/         # Setup scripts
 ```
+
+**Author:** Rayen Nait Slimane
+
+**Contact:** rayennaitslimane@gmail.com
