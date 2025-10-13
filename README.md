@@ -9,7 +9,6 @@ AI system that detects network attacks in real-time. Models are trained on CIC-I
 ## Structure
 
 ```
-├── data/          # Training/test datasets
 ├── notebooks/     # EDA and model training
 ├── models/        # Trained models + artifacts
 ├── api/           # Inference service
