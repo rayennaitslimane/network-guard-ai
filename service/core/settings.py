@@ -1,5 +1,3 @@
-import torch
-
 import joblib
 from transformers import (
     DistilBertTokenizer,
@@ -102,7 +100,5 @@ except Exception as exc:
 
 
 CONFIDENCE_THRESH = 0.90
-
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 PAYLOAD_MAX_LEN = 512
