@@ -1,6 +1,6 @@
 import pytest
 
-from service.core.detector import FLOW_MODEL_FEATURES, predict_flow, predict_payload
+from service.detector import FLOW_MODEL_FEATURES, predict_flow, predict_payload
 
 # Flow model tests
 

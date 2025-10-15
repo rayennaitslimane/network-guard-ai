@@ -2,7 +2,7 @@ import torch
 from pandas import DataFrame
 import numpy as np
 
-from service.core.settings import (
+from service.settings import (
     FLOW_MODEL_FEATURES,
     ATTACK_MAPPING,
     FLOW_MODEL,
