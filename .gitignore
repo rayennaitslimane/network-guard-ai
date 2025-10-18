@@ -41,6 +41,3 @@ env/
 .idea/
 *.swp
 *~
-
-# Ignore AI models as well (too big to be hosted on GitHub)
-/service/models/
