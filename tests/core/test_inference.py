@@ -34,3 +34,13 @@ def test_predict_payload_benign():
     results = predict_payload(features_list)
     for r in results:
         assert r == "Benign"
+
+
+def test_predict_payload_malicious():
+    features_list = []
+    for sample in MALICIOUS_PAYLOAD_SAMPLES:
+        features = dict(zip(PAYLOAD_FEATURES, sample))
+        features_list.append(features)
+    results = predict_payload(features_list)
+    for r in results:
+        assert r != "Benign"
