@@ -13,14 +13,37 @@ A machine learning model is trained on the **CIC-IDS2017 Network Flow** dataset,
   ```
   (see requirements.txt)
 
-## Run tests
-- Run the unit tests with:
-  ```sh
-  pytest -q
-  ```
-  Tests for inference are in test_inference.py.
+## Run the API Server
 
-## Quick usage
+Before starting the API, make sure Redis is running, since user authentication and inference tracing depend on it.
+
+If Redis isn’t already running:
+```sh
+sudo service redis-server start
+````
+
+Check its status:
+
+```sh
+sudo service redis-server status
+```
+
+Verify it’s responding (you should see PONG):
+
+```sh
+redis-cli ping
+```
+
+Once Redis is running, start the Network Guard AI API server:
+
+```sh
+python -m service.api.server --host 0.0.0.0 --port 5001
+```
+
+This launches the API on port **5001**.
+If you open another terminal, you can test endpoints such as `/health`, `/users`, and `/login` using `curl` or Postman.
+
+## Quick model usage
 
 - Flow classifier
   - Features list is defined in `service.core.config.FLOW_FEATURES`.
@@ -47,6 +70,14 @@ A machine learning model is trained on the **CIC-IDS2017 Network Flow** dataset,
   sample = dict(zip(PAYLOAD_FEATURES, [""]*len(PAYLOAD_FEATURES)))
   print(predict_payload(sample))
   ```
+
+## Run tests
+- Run the unit tests with:
+  ```sh
+  pytest -q
+  ```
+  Tests for inference are in test_inference.py.
+
 
 ## Configuration & models
 - Core config and model-loading constants: `service.core.config` (e.g. `service.core.config.MAX_INPUT_LEN`, `service.core.config.FLOW_MODEL`, `service.core.config.PAYLOAD_MODEL`).
