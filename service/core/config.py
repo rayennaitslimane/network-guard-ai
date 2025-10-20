@@ -55,7 +55,7 @@ def load_joblib(path):
 
 MAX_INPUT_LEN = 128
 NUM_LABELS = 2
-MODEL_NAME = "distilbert-base-uncased"
+BASE_MODEL_NAME = "distilbert-base-uncased"
 
 
 def load_peft_lora_transformer(path):
@@ -69,11 +69,11 @@ def load_peft_lora_transformer(path):
     Returns model with LoRA weights merged
     """
     base_model = AutoModelForSequenceClassification.from_pretrained(
-        MODEL_NAME, num_labels=NUM_LABELS, device_map="auto"
+        BASE_MODEL_NAME, num_labels=NUM_LABELS, device_map="auto"
     )
     model = PeftModel.from_pretrained(base_model, path)
     model = model.merge_and_unload()
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+    tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL_NAME)
     return {"model": model, "tokenizer": tokenizer}
 
 
